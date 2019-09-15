@@ -2,24 +2,19 @@
 
 require_once('config.php');
 
-function get_random_kanji($jlpt = NULL) {
+function get_random_kanji($jlpt = []) {
 
   $cond = '';
   $params = [];
-  if($jlpt && preg_match('/^[1-5]\+?$/', $jlpt)) {
-    if(strlen($jlpt) == 1) {
-      $cond = 'WHERE jlpt = :jlpt';
-      $params[':jlpt'] = JLPT_LEVELS[(int)$jlpt{0}];
+  if($jlpt) {
+    $cond = 'WHERE jlpt IN (';
+    foreach($jlpt as $lvl) {
+      $lvl = (int)$lvl;
+      $cond .= ':jlpt'.$lvl.',';
+      $params[':jlpt'.$lvl] = JLPT_LEVELS[$lvl];
     }
-    else {
-      $cond = 'WHERE jlpt IN (';
-      for($i = (int)$jlpt{0}; $i <= 5; $i++) {
-        $cond .= ':jlpt'.$i.',';
-        $params[':jlpt'.$i] = JLPT_LEVELS[$i];
-      }
-      $cond = trim($cond,',');
-      $cond .= ')';
-    }
+    $cond = trim($cond,',');
+    $cond .= ')';
   }
   
   $stmt = get_db()->prepare('SELECT * FROM kanjidict '.$cond.' ORDER BY RANDOM() LIMIT 1;');
@@ -32,10 +27,14 @@ function get_random_kanji($jlpt = NULL) {
 
 }
 
-function get_jlpt_level() {
-  $param_jlpt = filter_input(INPUT_GET, 'jlpt');
-  if(preg_match('/^[0-9]\+?$/', $param_jlpt) > 0) {
-    return $param_jlpt;
+function get_jlpt_levels() {
+  if(empty($_GET['jlpt']) || !is_array($_GET['jlpt'])) {
+    return [];
   }
-  return NULL;
+  $lvls = [];
+  foreach($_GET['jlpt'] as $lvl) {
+    $lvls[] = (int)$lvl;
+  }
+
+  return $lvls;
 }

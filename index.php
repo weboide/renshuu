@@ -5,7 +5,7 @@ require_once('view.php');
 
 
 
-$jlpt = get_jlpt_level();
+$jlpt = get_jlpt_levels();
 $view = new View('home');
 $kanji = get_random_kanji($jlpt);
 $view->kanji = $kanji;

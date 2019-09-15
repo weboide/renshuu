@@ -5,20 +5,17 @@ $box->kanji = $this->kanji;
 ?>
 <?php require('theme/header.php'); ?>
 
-<span class="jlpt" data-level="<?php echo htmlspecialchars($this->selected_jlpt) ?>">Showing N<?php echo htmlspecialchars($this->selected_jlpt) ?>:</span>
-
 <?php
 echo $box;
 ?>
 
+<ul class="cbox jlptlvl">
 <?php foreach(JLPT_LEVELS as $lvl => $name): ?>
-
-<a href="?jlpt=<?php echo urlencode($lvl); ?>"><?php echo htmlspecialchars(substr($name, 0, 2))?></a><br/>
-<?php if($lvl < 5): ?>
-  <a href="?jlpt=<?php echo urlencode($lvl.'+'); ?>"><?php echo htmlspecialchars(substr($name, 0, 2))?> and lower</a><br/>
-<?php endif; ?>
-
+  <li>
+  <input type='checkbox' id='cblvl<?php echo urlencode($lvl); ?>' data-lvl='<?php echo urlencode($lvl); ?>' name='cblvl<?php echo urlencode($lvl); ?>'/>
+  <label for='cblvl<?php echo urlencode($lvl); ?>'><?php echo htmlspecialchars(substr($name, 0, 2))?></label>
+  </li>
 <?php endforeach; ?>
-
+</ul>
 
 <?php require('theme/footer.php'); ?>
