@@ -1,0 +1,25 @@
+body {
+  font-family: sans-serif;
+  background: #071013;
+  color:#FCFAF9;
+}
+
+.kanjibox  {
+  font-family: 'Noto Serif JP', serif;
+  width:80%;
+  margin:auto;
+  text-align: center;
+  font-size:1.3em;
+}
+.kanjibox .kanji {
+  width:100%;
+  font-size:8em;
+  padding:.1em 0;
+  line-height:1;
+}
+
+.js .kanjibox .kunyomi,
+.js .kanjibox .onyomi,
+.js .kanjibox .meaning {
+  opacity:0;
+}

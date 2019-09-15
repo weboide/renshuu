@@ -1,0 +1,3 @@
+[submodule "kanjium"]
+	path = kanjium
+	url = git@github.com:mifunetoshiro/kanjium.git
