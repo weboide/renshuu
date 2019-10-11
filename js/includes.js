@@ -14,3 +14,33 @@ $.extend({
     return $.getUrlVars()[name];
   }
 });
+
+function showNewKanji(speed) {
+  if(speed === undefined) {
+    speed = 800;
+  }
+  $.get('api.php', {
+    'query': 'kanjibox',
+    'jlpt': getJLPTlvls(),
+  }, function(data) {
+    $('.kanjibox').fadeOut(speed, function(){
+      $('.kanjibox').replaceWith(data)
+      $('.kanjibox').css('opacity', 0).animate({opacity:1}, speed, 'swing', setupReveal);
+      setTimeout(showNewKanji, cycle_delay);
+    });
+  });
+}
+
+function setupReveal() {
+  $('.kanjibox .kunyomi,.kanjibox .onyomi,.kanjibox .meaning').delay(reveal_delay).animate({opacity:1}, 800);
+}
+
+function getJLPTlvls() {
+  var param = [];
+  $('.jlptlvl input[type=checkbox]').each(function() {
+    if($(this).is(":checked")) {
+      param.push($(this).data('lvl'));
+    };
+  });
+  return param;
+}

@@ -4,7 +4,71 @@ body {
   color:#FCFAF9;
 }
 
-.kanjibox  {
+
+
+input[type=textfield] {
+	background-color:#424141;
+	border:1px solid #0b0e07;
+	display:inline-block;
+	cursor:pointer;
+	color:#FCFAF9;
+	padding:5px 5px;
+	text-decoration:none;
+}
+input[type=textfield]:hover {
+	background-color:#2b2b2b;
+}
+
+
+.button-primary {
+	-moz-box-shadow:inset 0px 34px 0px -15px #b54b3a;
+	-webkit-box-shadow:inset 0px 34px 0px -15px #b54b3a;
+	box-shadow:inset 0px 34px 0px -15px #b54b3a;
+	background-color:#a73f2d;
+	border:1px solid #241d13;
+	display:inline-block;
+	cursor:pointer;
+	color:#FCFAF9;
+	font-weight:bold;
+	padding:5px 23px;
+	text-decoration:none;
+	text-shadow:0px -1px 0px #7a2a1d;
+}
+.button-primary:hover {
+	background-color:#b34332;
+}
+.button-primary:active {
+	position:relative;
+	top:1px;
+}
+
+.button-secondary {
+	-moz-box-shadow:inset 0px 34px 0px -15px #1e9ad4;
+	-webkit-box-shadow:inset 0px 34px 0px -15px #1e9ad4;
+	box-shadow:inset 0px 34px 0px -15px #1e9ad4;
+	background-color:#2287bd;
+	border:1px solid #0b0e07;
+	display:inline-block;
+	cursor:pointer;
+	color:#FCFAF9;
+	font-weight:bold;
+	padding:5px 23px;
+	text-decoration:none;
+	text-shadow:0px -1px 0px #263666;
+}
+.button-secondary:hover {
+	background-color:#0076de;
+}
+.button-secondary:active {
+	position:relative;
+	top:1px;
+}
+
+        
+
+/* ===============  kanjibox ==================  */
+
+.kanjibox {
   font-family: 'Noto Serif JP', serif;
   width:80%;
   margin:auto;
@@ -24,11 +88,62 @@ body {
   opacity:0;
 }
 
-
-
 .jlptlvl {
   text-align: center;
 }
+
+/* ===============  conjugation ==================  */
+
+.conjbox {
+  font-family: 'Noto Serif JP', serif;
+  width:80%;
+  margin:auto;
+  text-align: center;
+  font-size:1.3em;
+}
+
+.conjbox .verb {
+  font-size:2em;
+  padding:.5em;
+  margin:.2em;
+  line-height:1;
+  background:rgb(112, 51, 54);
+  border:.05em solid rgb(66, 29, 31);
+  border-radius: .5em;
+}
+
+.answerbox {
+  text-align: center;
+  width:80%;
+  margin:auto;
+  padding:.5em;
+  background:rgb(31, 61, 53);
+  border:.05em solid rgb(65, 29, 31);
+  border-radius: .5em;
+}
+
+.answer {
+  clear:left;
+}
+
+.verb {
+  position: relative;
+}
+
+.jisho {
+  font-family: sans-serif;
+  font-size:0.35em;
+  position:absolute;
+  top:0.4em;
+  right:0.8em;
+}
+
+.jisho a {
+  text-decoration: none;
+  color:#aaa;
+}
+
+/* ===============  checkboxes ==================  */
 
 ul.cbox {
   list-style: none;

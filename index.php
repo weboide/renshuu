@@ -1,9 +1,5 @@
 <?php
-
-require_once('functions.php');
-require_once('view.php');
-
-
+require_once('bootstrap.php');
 
 $jlpt = get_jlpt_levels();
 $view = new View('home');

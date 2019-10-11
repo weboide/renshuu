@@ -1,5 +1,5 @@
 <?php
-require_once('functions.php');
+require_once('bootstrap.php');
 require_once('view.php');
 
 $query = filter_input(INPUT_GET, 'query');
